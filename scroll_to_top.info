@@ -1,0 +1,5 @@
+name = Scroll to top
+description = Scroll to top module.
+package = Other
+core = 6.x
+

@@ -1,0 +1,24 @@
+<?php
+function scroll_to_top_init(){
+if(!drupal_is_front_page()){
+ drupal_add_css(drupal_get_path('module', 'scroll_to_top') .'/scroll_to_top.css', 'module');
+ drupal_add_js(drupal_get_path('module', 'scroll_to_top') .'/scroll_to_top.js', 'module');
+ }
+}
+function scroll_to_top_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
+if(!drupal_is_front_page()){
+
+$content='<p id="back-top">
+		<a href="#top"><span></span>Back to Top</a>
+	</p>';
+  switch ($op) {
+    case 'view':
+      $node->content['scroll'] = array(
+        '#value' => $content,
+        '#weight' => 10,
+      );
+      break;
+  }
+}
+
+}
