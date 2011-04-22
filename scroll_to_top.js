@@ -1,4 +1,3 @@
-	// fade in #back-top
 	$(function () {
 		// hide #back-top first
 		$("#back-top").hide();

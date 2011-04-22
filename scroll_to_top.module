@@ -1,13 +1,26 @@
-<?php
+<?php  // $Id: views_fluidgrid.module,v 1.1.2.4 2010/03/16 07:16:01 doublethink Exp $
+
+/**
+ * @file
+ * Provide scroll to top link.
+ */
+
+/**
+ * Implementation of hook_init().
+ */
 function scroll_to_top_init(){
+// if not front page, add style and script files
 if(!drupal_is_front_page()){
  drupal_add_css(drupal_get_path('module', 'scroll_to_top') .'/scroll_to_top.css', 'module');
  drupal_add_js(drupal_get_path('module', 'scroll_to_top') .'/scroll_to_top.js', 'module');
  }
 }
+/**
+ * Implementation of hook_nodeapi().
+ */
 function scroll_to_top_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
+// if not front page we add the link to the node
 if(!drupal_is_front_page()){
-
 $content='<p id="back-top">
 		<a href="#top"><span></span>Back to Top</a>
 	</p>';
