@@ -1,24 +1,54 @@
-<?php
+<?php  // $Id$
+
+/**
+ * @file
+ * Provide scroll to top link.
+ */
+
+/**
+ * Implementation of hook_init().
+ */
 function scroll_to_top_init(){
 if(!drupal_is_front_page()){
  drupal_add_css(drupal_get_path('module', 'scroll_to_top') .'/scroll_to_top.css', 'module');
- drupal_add_js(drupal_get_path('module', 'scroll_to_top') .'/scroll_to_top.js', 'module');
- }
+ drupal_add_js("jQuery(document).ready(function(){
+	jQuery(\"#back-top\").hide();
+	jQuery(function () {
+		jQuery(window).scroll(function () {
+			if (jQuery(this).scrollTop() > 100) {
+				jQuery('#back-top').fadeIn();
+			} else {
+				jQuery('#back-top').fadeOut();
+			}
+		});
+
+		// scroll body to 0px on click
+		jQuery('#back-top a').click(function () {
+			jQuery('body,html').animate({
+				scrollTop: 0
+			}, 800);
+			return false;
+		});
+	});
+
+});", 'inline');
+  }
 }
-function scroll_to_top_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
+
+/**
+ * Implementation of hook_node_view().
+ */
+function scroll_to_top_node_view($node, $view_mode, $langcode) {
 if(!drupal_is_front_page()){
 
 $content='<p id="back-top">
 		<a href="#top"><span></span>Back to Top</a>
 	</p>';
-  switch ($op) {
-    case 'view':
       $node->content['scroll'] = array(
-        '#value' => $content,
+        '#markup' => $content,
         '#weight' => 10,
       );
-      break;
-  }
 }
 
 }
+
