@@ -1,20 +1,28 @@
-	// fade in #back-top
-	jQuery(function () {
-		// hide #back-top first
-		jQuery("#back-top").hide();
-		jQuery(window).scroll(function () {
-			if (jQuery(this).scrollTop() > 100) {
-				jQuery('#back-top').fadeIn();
+(function($){
+/**
+ * Toggle the visibility of the scroll to top link.
+ */
+ 
+Drupal.behaviors.scroll_to_top = {
+  attach: function (context, settings) {
+	$("#back-top").hide();
+	$(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 100) {
+				$('#back-top').fadeIn();
 			} else {
-				jQuery('#back-top').fadeOut();
+				$('#back-top').fadeOut();
 			}
 		});
 
 		// scroll body to 0px on click
-		jQuery('#back-top a').click(function () {
-			jQuery('body,html').animate({
+		$('#back-top a').click(function () {
+			$('body,html').animate({
 				scrollTop: 0
 			}, 800);
 			return false;
 		});
 	});
+	}
+};
+})(jQuery);
