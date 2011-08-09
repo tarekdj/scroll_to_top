@@ -1,4 +1,7 @@
-	$(function () {
+/**
+ * Scroll to top behavior
+ */
+Drupal.behaviors.scroll_to_top = function (context) {
 		// hide #back-top first
 		$("#back-top").hide();
 		$(window).scroll(function () {
@@ -16,4 +19,4 @@
 			}, 800);
 			return false;
 		});
-	});
+};
