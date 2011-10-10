@@ -1,4 +1,4 @@
-<?php  // $Id: views_fluidgrid.module,v 1.1.2.4 2010/03/16 07:16:01 doublethink Exp $
+<?php
 
 /**
  * @file
@@ -22,7 +22,7 @@ function scroll_to_top_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
 // if not front page we add the link to the node
 if(!drupal_is_front_page()){
 $content='<p id="back-top">
-		<a href="#top"><span></span>Back to Top</a>
+		<a href="#top"><span></span>' . t('Back to Top') . '</a>
 	</p>';
   switch ($op) {
     case 'view':
