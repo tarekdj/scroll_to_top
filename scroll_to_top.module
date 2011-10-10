@@ -1,4 +1,4 @@
-<?php  // $Id$
+<?php
 
 /**
  * @file
@@ -22,7 +22,7 @@ function scroll_to_top_node_view($node, $view_mode, $langcode) {
   if (!drupal_is_front_page()) {
 
     $content='<p id="back-top">
-	  <a href="#top"><span></span>Back to Top</a>
+	  <a href="#top"><span></span>' . t('Back to Top') . '</a>
 	</p>';
     $node->content['scroll'] = array(
         '#markup' => $content,
