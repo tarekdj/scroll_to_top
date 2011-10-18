@@ -11,5 +11,27 @@
 function scroll_to_top_init(){
  drupal_add_css(drupal_get_path('module', 'scroll_to_top') .'/scroll_to_top.css', 'module');
  drupal_add_js(drupal_get_path('module', 'scroll_to_top') .'/scroll_to_top.js', 'module');
+ if (variable_get('scroll_to_top_position', 1)==1) {
+  drupal_add_js("$(document).ready(function() { $('#back-top').css('right','40px');});", 'inline');
+  } 
+}
+
+ /**
+ * Implements hook_menu().
+ */
+function scroll_to_top_menu() {
+  $items = array();
+
+  $items['admin/settings/scrolltotop'] = array(
+    'title' => 'Scroll to top',
+    'description' => 'Scroll To Top stettings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('scroll_to_top_settings'),
+    'access arguments' => array('access administration pages'),
+    'file' => 'scroll_to_top.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
 }
 

@@ -5,6 +5,7 @@ Back to top button
 	position: fixed;
 	bottom: 30px;
 	margin-left: 20px;
+	z-index:9999;
 	/*IE6 hack */
 		 _position: absolute;
 		 _top:expression(documentElement.scrollTop+body.scrollTop);
