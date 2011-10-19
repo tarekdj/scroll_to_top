@@ -12,8 +12,18 @@ function scroll_to_top_init(){
  drupal_add_css(drupal_get_path('module', 'scroll_to_top') .'/scroll_to_top.css', 'module');
  drupal_add_js(drupal_get_path('module', 'scroll_to_top') .'/scroll_to_top.js', 'module');
  if (variable_get('scroll_to_top_position', 1)==1) {
-  drupal_add_js("$(document).ready(function() { $('#back-top').css('right','40px');});", 'inline');
-  } 
+  $position = "$('#back-top').css('right','40px');";
+  } else {
+  $position = "";
+  }
+ $bgcolor= " $('#back-top span').mouseover(function(){ $(this).css('background-color','" . variable_get('scroll_to_top_bg_color_hover', '#777777') . "');}).mouseout(function(){ $(this).css('background-color','" . variable_get('scroll_to_top_bg_color_out', '#CCCCCC') . "');})";
+ $script = "$(document).ready(function() {";
+ $script .= $position;
+ $script .= $bgcolor;
+ $script .= "});";
+ drupal_add_js($script, 'inline');
+  //drupal_add_js("$(document).ready(function() { $('#back-top a').hover(function(){ $(this).css('background-color','" . variable_get('scroll_to_top_bg_color_hover', '#777777') . "');});});", 'inline');
+
 }
 
  /**
