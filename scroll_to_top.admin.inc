@@ -16,6 +16,7 @@ $form = array();
     '#options' => array(
       1 => t('right'),
       2 => t('left'),
+      3 => t('middle'),
     ),
     '#default_value' => variable_get('scroll_to_top_position', 1),
   );
@@ -34,6 +35,12 @@ $form = array();
     '#default_value' => variable_get('scroll_to_top_bg_color_out', '#CCCCCC'),
     '#size' => 10,
     '#maxlength' => 7,
+  );
+  $form['scroll_to_top_display_text'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Display label'),
+    '#description' => t('Display "BACK TO TOP" text under the button'),
+    '#default_value' => variable_get('scroll_to_top_display_text', TRUE),
   );
 
   return system_settings_form($form);
