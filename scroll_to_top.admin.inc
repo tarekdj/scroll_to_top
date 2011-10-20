@@ -18,7 +18,7 @@ $form = array();
       2 => t('left'),
       3 => t('middle'),
     ),
-    '#default_value' => variable_get('scroll_to_top_position', 1),
+    '#default_value' => variable_get('scroll_to_top_position', 0.5),
   );
   $form['scroll_to_top_bg_color_hover'] = array(
     '#type' => 'textfield',
@@ -45,3 +45,4 @@ $form = array();
 
   return system_settings_form($form);
 }
+
