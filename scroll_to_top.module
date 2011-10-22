@@ -11,6 +11,45 @@
 function scroll_to_top_init() {
     drupal_add_css(drupal_get_path('module', 'scroll_to_top') . '/scroll_to_top.css', 'module');
     drupal_add_js(drupal_get_path('module', 'scroll_to_top') . '/scroll_to_top.js');
+  //building the css style
+  $position = "";
+  // Button position
+ if (variable_get('scroll_to_top_position', 1)==1) {
+  $position = "#back-top { right:40px; }";
+  }
+ if (variable_get('scroll_to_top_position', 1)==3) {
+  $position = "#back-top { left:50%;margin:0px;}";
+  }
+  // Display label
+ if (variable_get('scroll_to_top_display_text', TRUE)==FALSE) {
+  $display = "div#link {display : none;}";
+  } else {
+  $display = "";
+  }
+  // background color on hover
+ $bgcolor = "#back-top span { background-color: " . variable_get('scroll_to_top_bg_color_out', '#CCCCCC') . ";}";
+ $bgcolor .= " #back-top span:hover {opacity:1;filter:alpha(opacity = 1);background-color: " . variable_get('scroll_to_top_bg_color_hover', '#777777') . ";}";
+ $css = $position;
+ $css .= $bgcolor;
+ $css .= $display;
+ drupal_add_css($css, 'inline');
 }
 
+ /**
+ * Implements hook_menu().
+ */
+function scroll_to_top_menu() {
+  $items = array();
 
+  $items['admin/config/user-interface/scrolltotop'] = array(
+    'title' => 'Scroll to top',
+    'description' => 'Scroll To Top stettings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('scroll_to_top_settings'),
+    'access arguments' => array('access administration pages'),
+    'file' => 'scroll_to_top.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
