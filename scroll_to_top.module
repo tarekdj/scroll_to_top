@@ -39,7 +39,7 @@ function scroll_to_top_menu() {
 
   $items['admin/settings/scrolltotop'] = array(
     'title' => 'Scroll to top',
-    'description' => 'Scroll To Top stettings',
+    'description' => 'Scroll To Top settings',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('scroll_to_top_settings'),
     'access arguments' => array('access administration pages'),
