@@ -6,7 +6,7 @@
 Drupal.behaviors.scroll_to_top = {
   attach: function (context, settings) {
 	// append  back to top link top body
-	$("body").append("<p id='back-top'><a href='#top'><span></span><div id='link'>"+Drupal.t("Back to Top")+"</div></a></p>");
+	$("body").append("<p id='back-top'><a href='#top'><span id='button'></span><span id='link'>"+Drupal.t("Back to Top")+"</span></a></p>");
 	$("#back-top").hide();
 	$(function () {
 		$(window).scroll(function () {

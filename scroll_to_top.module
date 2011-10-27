@@ -22,13 +22,13 @@ function scroll_to_top_init() {
   }
   // Display label
  if (variable_get('scroll_to_top_display_text', TRUE)==FALSE) {
-  $display = "div#link {display : none;}";
+  $display = "span#link {display : none;}";
   } else {
   $display = "";
   }
   // background color on hover
- $bgcolor = "#back-top span { background-color: " . variable_get('scroll_to_top_bg_color_out', '#CCCCCC') . ";}";
- $bgcolor .= " #back-top span:hover {opacity:1;filter:alpha(opacity = 1);background-color: " . variable_get('scroll_to_top_bg_color_hover', '#777777') . ";}";
+ $bgcolor = "#back-top span#button { background-color: " . variable_get('scroll_to_top_bg_color_out', '#CCCCCC') . ";}";
+ $bgcolor .= " #back-top span#button:hover {opacity:1;filter:alpha(opacity = 1);background-color: " . variable_get('scroll_to_top_bg_color_hover', '#777777') . ";}";
  $css = $position;
  $css .= $bgcolor;
  $css .= $display;
