@@ -42,7 +42,12 @@ $form = array();
     '#description' => t('Display "BACK TO TOP" text under the button'),
     '#default_value' => variable_get('scroll_to_top_display_text', TRUE),
   );
-
+  $form['scroll_to_top_enable_admin_theme'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable on administration theme.'),
+    '#description' => t('Enable scroll to top button on administartion theme.'),
+    '#default_value' => variable_get('scroll_to_top_enable_admin_theme', TRUE),
+  );
   return system_settings_form($form);
 }
 

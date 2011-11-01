@@ -9,6 +9,8 @@
  * Implementation of hook_init().
  */
 function scroll_to_top_init() {
+global $theme;
+ if(variable_get('scroll_to_top_enable_admin_theme', TRUE)==TRUE || (variable_get('scroll_to_top_enable_admin_theme', TRUE)==FALSE && ($theme != variable_get('admin_theme')))) {
     drupal_add_css(drupal_get_path('module', 'scroll_to_top') . '/scroll_to_top.css', 'module');
     drupal_add_js(drupal_get_path('module', 'scroll_to_top') . '/scroll_to_top.js');
   //building the css style
@@ -23,7 +25,8 @@ function scroll_to_top_init() {
   // Display label
  if (variable_get('scroll_to_top_display_text', TRUE)==FALSE) {
   $display = "span#link {display : none;}";
-  } else {
+  } 
+ else {
   $display = "";
   }
   // background color on hover
@@ -33,6 +36,7 @@ function scroll_to_top_init() {
  $css .= $bgcolor;
  $css .= $display;
  drupal_add_css($css, 'inline');
+ }
 }
 
  /**
