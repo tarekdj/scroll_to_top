@@ -6,7 +6,21 @@
 Drupal.behaviors.scroll_to_top = {
   attach: function (context, settings) {
 	// append  back to top link top body
-	$("body").append("<p id='back-top'><a href='#top'><span id='button'></span><span id='link'>"+Drupal.t("Back to Top")+"</span></a></p>");
+	$("body").append("<p id='back-top'><a href='#top'><span id='button'></span><span id='link'>" + settings.scroll_to_top.label + "</span></a></p>");
+	// Preview function
+	$("input").change(function () {
+		// building the style for preview
+		var style="<style>#scroll-to-top-prev-container #back-top-prev span#button-prev{ background-color:"+$("#edit-scroll-to-top-bg-color-out").val()+";} #scroll-to-top-prev-container #back-top-prev span#button-prev:hover{ background-color:"+$("#edit-scroll-to-top-bg-color-hover").val()+" }</style>"
+		// building the html content of preview
+		var html="<p id='back-top-prev' style='position:relative;'><a href='#top'><span id='button-prev'></span><span id='link'>";
+		// if label enabled display it
+		if($("#edit-scroll-to-top-display-text").attr('checked')){
+		html+=$("#edit-scroll-to-top-label").val();
+		}
+		html+="</span></a></p>";
+		// update the preview
+		$("#scroll-to-top-prev-container").html(style+html);
+	});
 	$("#back-top").hide();
 	$(function () {
 		$(window).scroll(function () {
