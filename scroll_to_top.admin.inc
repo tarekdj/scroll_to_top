@@ -58,7 +58,7 @@ $form = array();
   $form['scroll_to_top_preview'] = array(
     '#type' => 'item',
     '#title' => t('Preview'),
-    '#markup' => '<div id="scroll-to-top-prev-container">' . t('Change a setting value to see a preview. Position and enable on admin theme not supported on the preview') . '</div>',
+    '#markup' => '<div id="scroll-to-top-prev-container">' . t('Change a setting value to see a preview. "Position" and "enable on admin theme" not included.') . '</div>',
   );
   return system_settings_form($form);
 }
