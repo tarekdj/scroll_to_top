@@ -3,7 +3,10 @@
  */
 Drupal.behaviors.scroll_to_top = function (context) {
 		// append  back to top link top body
-		$("body").append("<div id='back-top'><a href='#top'><span></span><div id='link'>"+Drupal.t("Back to Top")+"</div></a></div>");
+		var exist= $('#back-top').length; // exist = 0 if element doesn't exist
+		if(exist == 0){ // this test is for fixing the ajax bug 
+			$("body").append("<div id='back-top'><a href='#top'><span></span><div id='link'>"+Drupal.t("Back to Top")+"</div></a></div>");
+		}
 		// hide #back-top first
 		$("#back-top").hide();
 		$(window).scroll(function () {
