@@ -19,10 +19,10 @@ function scroll_to_top_init(){
   $position = "$('#back-top').css({'left':'50%','margin':'0px'});";
   }
  if (variable_get('scroll_to_top_display_text', TRUE)==FALSE) {
-  $display = "$('div#link').css('display','none');";
+  $display = "$('span#link').css('display','none');";
   }
-$bgcolor = "$('#back-top span').css('background-color','" . variable_get('scroll_to_top_bg_color_out', '#CCCCCC') . "').fadeTo('fast',0.5);";
- $bgcolor .= " $('#back-top span').mouseover(function(){ $(this).css({'background-color':'" . variable_get('scroll_to_top_bg_color_hover', '#777777') . "','opacity':'1'}).fadeTo('slow',1);}).mouseout(function(){ $(this).css({'background-color':'" . variable_get('scroll_to_top_bg_color_out', '#CCCCCC') . "'}).fadeTo('fast',0.5);});";
+ $bgcolor = "$('#back-top .icon').css('background-color','" . variable_get('scroll_to_top_bg_color_out', '#CCCCCC') . "').fadeTo('fast',0.5);";
+ $bgcolor .= " $('#back-top .icon').mouseover(function(){ $(this).css({'background-color':'" . variable_get('scroll_to_top_bg_color_hover', '#777777') . "','opacity':'1'}).fadeTo('slow',1);}).mouseout(function(){ $(this).css({'background-color':'" . variable_get('scroll_to_top_bg_color_out', '#CCCCCC') . "'}).fadeTo('fast',0.5);});";
  $script = "$(document).ready(function() {";
  $script .= $position;
  $script .= $bgcolor;
