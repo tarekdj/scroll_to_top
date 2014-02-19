@@ -27,7 +27,12 @@ Drupal.behaviors.scroll_to_top = {
 	$("#back-top").hide();
 	$(function () {
 		$(window).scroll(function () {
-			if ($(this).scrollTop() > 100) {
+		// Adding IE8 support
+		  var scrollTop = 0;
+		  if (document.documentElement && document.documentElement.scrollTop) {
+			scrollTop = document.documentElement.scrollTop;
+		  }
+      if ($(this).scrollTop() > 100 || scrollTop > 100) {
 				$('#back-top').fadeIn();
 			} else {
 				$('#back-top').fadeOut();
