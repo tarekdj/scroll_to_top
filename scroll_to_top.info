@@ -1,9 +1,0 @@
-name = Scroll to top
-description = Scroll to top module.
-package = Other
-core = 7.x
-files[] = scroll_to_top.css
-files[] = scroll_to_top.js
-
-configure = admin/config/user-interface/scrolltotop
-
